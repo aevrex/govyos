@@ -2,13 +2,12 @@
 
 [![Go Report Card](https://goreportcard.com/badge/github.com/aevrex/govyos)](https://goreportcard.com/report/github.com/aevrex/govyos)
 [![GoDoc](https://godoc.org/github.com/aevrex/govyos?status.svg)](https://godoc.org/github.com/aevrex/govyos)
-[![Build Status](https://github.com/aevrex/govyos/actions/workflows/go.yml/badge.svg)](https://github.com/aevrex/govyos/actions/workflows/go.yml)
 [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/aevrex/govyos)](https://github.com/aevrex/govyos/releases)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: MIT](https://img.shields.io/badge/License-Apache_2.0-yellow.svg)](https://opensource.org/license/apache-2-0)
 
 `go-vyos` is a modern, actively maintained Go SDK for interacting with the VyOS router operating system's HTTP API.
 
-This project was created as a successor to the deprecated and unmaintained `vyos-go` library. It provides a complete, robust, and idiomatic Go interface for configuring, managing, and monitoring VyOS devices.
+This project was created as a successor to the `vyos-go` library. It will provide a complete, robust, and idiomatic Go interface for configuring, managing, and monitoring VyOS devices.
 
 ---
 
@@ -18,10 +17,9 @@ This library is currently in **active development**. The API may have breaking c
 
 ---
 
-## Features
+## Intended Features
 
 * **Full API Support:** Complete coverage for VyOS configuration (set, show, delete) and operational commands.
-* **Idiomatic Go:** Designed to feel natural for Go developers, with proper error handling and `context.Context` support.
 * **Actively Maintained:** Aims to provide a reliable, long-term solution for Go-based VyOS automation.
 * **Type-Safe:** (Goal) To provide type-safe helpers for common configuration paths.
 
@@ -30,4 +28,4 @@ This library is currently in **active development**. The API may have breaking c
 ## Installation
 
 ```sh
-go get [github.com/YOUR_USERNAME/YOUR_REPONAME](https://github.com/YOUR_USERNAME/YOUR_REPONAME)
+go get [github.com/YOUR_USERNAME/YOUR_REPONAME](https://github.com/aevrex/govyos)

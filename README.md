@@ -41,10 +41,9 @@ Contributions are welcome. This project is intended to be a community-driven rep
 - Push to the branch (git push origin feature/my-new-feature).
 - Open a new Pull Request.
 
-License
-This project is licensed under the MIT License.
+## License
+This project is licensed under the Apache 2.0 License.
 
-Acknowledgements
-The VyOS Team for their excellent open-source router OS.
-
-The author of the original vyos-go for their initial work.
+## Acknowledgements
+- The VyOS Team for their excellent open-source router OS.
+- The author of the original vyos-go for their initial work.

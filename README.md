@@ -5,7 +5,7 @@
 [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/aevrex/govyos)](https://github.com/aevrex/govyos/releases)
 [![License: MIT](https://img.shields.io/badge/License-Apache_2.0-yellow.svg)](https://opensource.org/license/apache-2-0)
 
-`go-vyos` is a modern, actively maintained Go SDK for interacting with the VyOS router operating system's HTTP API.
+`govyos` is a modern, actively maintained Go SDK for interacting with the VyOS router operating system's HTTP API.
 
 This project was created as a successor to the `vyos-go` library. It will provide a complete, robust, and idiomatic Go interface for configuring, managing, and monitoring VyOS devices.
 

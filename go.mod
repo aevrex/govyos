@@ -1,3 +1,3 @@
-module github.com/aevrex/govyos
+module github.com/aevrex/soren
 
 go 1.22.2

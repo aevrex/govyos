@@ -1,4 +1,4 @@
-# go-vyos
+![GoVyOS Logo](./assets/govyosLogo.png)
 
 [![Go Report Card](https://goreportcard.com/badge/github.com/aevrex/govyos)](https://goreportcard.com/report/github.com/aevrex/govyos)
 [![GoDoc](https://godoc.org/github.com/aevrex/govyos?status.svg)](https://godoc.org/github.com/aevrex/govyos)
@@ -28,4 +28,23 @@ This library is currently in **active development**. The API may have breaking c
 ## Installation
 
 ```sh
-go get [github.com/YOUR_USERNAME/YOUR_REPONAME](https://github.com/aevrex/govyos)
+go get github.com/aevrex/govyos
+```
+
+## Contributing
+
+Contributions are welcome. This project is intended to be a community-driven replacement for the old library. Please feel free to submit a Pull Request or open an Issue.
+
+- Fork the repository.
+- Create your feature branch (git checkout -b feature/my-new-feature).
+- Commit your changes (git commit -am 'Add some feature').
+- Push to the branch (git push origin feature/my-new-feature).
+- Open a new Pull Request.
+
+License
+This project is licensed under the MIT License.
+
+Acknowledgements
+The VyOS Team for their excellent open-source router OS.
+
+The author of the original vyos-go for their initial work.

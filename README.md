@@ -11,7 +11,7 @@ This project was created as a successor to the `vyos-go` library. It will provid
 
 ---
 
-## ⚠️ Project Status
+## ⚠️ Project Status ⚠️
 
 This library is currently in **active development**. The API may have breaking changes until a stable `v1.0.0` release. Feedback and contributions are welcome.
 
@@ -21,7 +21,7 @@ This library is currently in **active development**. The API may have breaking c
 
 * **Full API Support:** Complete coverage for VyOS configuration (set, show, delete) and operational commands.
 * **Actively Maintained:** Aims to provide a reliable, long-term solution for Go-based VyOS automation.
-* **Type-Safe:** (Goal) To provide type-safe helpers for common configuration paths.
+* **Type-Safe:** To provide type-safe helpers for common configuration paths.
 
 ---
 

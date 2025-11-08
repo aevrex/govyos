@@ -2,10 +2,7 @@ package soren
 
 import (
 	"context"
-	"encoding/json"
 	"fmt"
-	"io"
-	"net/http"
 )
 
 type SystemInfo struct {
@@ -15,42 +12,14 @@ type SystemInfo struct {
 }
 
 func (c *Client) GetInfo(ctx context.Context) (*SystemInfo, error) {
-	infoURL := c.baseURL + "/info"
-
-	req, err := http.NewRequestWithContext(ctx, http.MethodGet, infoURL, nil)
-	if err != nil {
-		return nil, fmt.Errorf("unable to create request: %w", err)
-	}
-
-	resp, err := c.httpClient.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("API call failed: %w", err)
-	}
-
-	defer resp.Body.Close()
-
-	if resp.StatusCode != http.StatusOK {
-		responseBody, _ := io.ReadAll(resp.Body)
-		return nil, fmt.Errorf("API returned status %d: %s", resp.StatusCode, responseBody)
-	}
-
-	var rawResponse APIResponse
-	if err := json.NewDecoder(resp.Body).Decode(&rawResponse); err != nil {
-		return nil, fmt.Errorf("failed to decode API response: %w", err)
-	}
-
-	if !rawResponse.Success {
-		return nil, fmt.Errorf("VyOS command failed: %s", rawResponse.Error)
-	}
-
-	dataBytes, err := json.Marshal(rawResponse.Data)
-	if err != nil {
-		return nil, fmt.Errorf("failed to marshal data field: %w", err)
-	}
+	var payload struct{}
 
 	var info SystemInfo
-	if err := json.Unmarshal(dataBytes, &info); err != nil {
-		return nil, fmt.Errorf("failed to unmarshal SystemInfo: %w", err)
+
+	apiPath := "/info"
+
+	if err := c.Call(ctx, apiPath, payload, &info); err != nil {
+		return nil, fmt.Errorf("failed to retrieve system info: %w", err)
 	}
 
 	return &info, nil

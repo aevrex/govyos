@@ -17,7 +17,7 @@ func (c *Client) ShowConfig(ctx context.Context, path []string) (map[string]any,
 
 	var result map[string]any
 
-	err := c.Call(ctx, "/retrieve", payload, &result)
+	err := Call(c, ctx, "/retrieve", payload, &result)
 	if err != nil {
 		return nil, err
 	}

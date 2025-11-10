@@ -1,9 +1,8 @@
 package soren
 
 import (
-	"errors"
+	"fmt"
 	"net/http"
-	"time"
 )
 
 type Client struct {
@@ -12,24 +11,20 @@ type Client struct {
 	httpClient *http.Client
 }
 
-func NewClient(baseURL string, apiKey string) (*Client, error) {
-	if baseURL == "" {
-		return nil, errors.New("URL cannot be empty")
-	}
-
-	if apiKey == "" {
-		return nil, errors.New("API key cannot be empty")
-	}
-
-	httpClient := &http.Client{
-		Timeout: 30 * time.Second,
-	}
-
-	newClient := &Client{
+func NewClient(baseURL string, apiKey string, opts ...Option) (*Client, error) {
+	c := &Client{
 		baseURL:    baseURL,
 		apiKey:     apiKey,
-		httpClient: httpClient,
+		httpClient: &http.Client{},
 	}
 
-	return newClient, nil
+	for _, opt := range opts {
+		opt(c)
+	}
+
+	if c.baseURL == "" || c.apiKey == "" {
+		return nil, fmt.Errorf("baseURL and token must be provided")
+	}
+
+	return c, nil
 }

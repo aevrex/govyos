@@ -1,14 +1,14 @@
 package soren
 
 import (
-	"bytes"
 	"context"
 	"encoding/json"
 	"errors"
 	"fmt"
 	"io"
-	"mime/multipart"
 	"net/http"
+	"net/url"
+	"strings"
 )
 
 type APIResponse struct {
@@ -26,27 +26,19 @@ func (c *Client) executeCommand(ctx context.Context, apiPath string, payload any
 	}
 	jsonString := string(jsonBytes)
 
-	var requestBody bytes.Buffer
-	writer := multipart.NewWriter(&requestBody)
-
-	if err := writer.WriteField("data", jsonString); err != nil {
-		return nil, fmt.Errorf("failed to write 'data' field: %w", err)
+	formData := url.Values{
+		"data": {jsonString},
+		"key":  {c.apiKey},
 	}
 
-	if err := writer.WriteField("key", c.apiKey); err != nil {
-		return nil, fmt.Errorf("failed to write 'key' field: %w", err)
-	}
+	body := formData.Encode()
 
-	if err := writer.Close(); err != nil {
-		return nil, fmt.Errorf("failed to close multipart writer: %w", err)
-	}
-
-	req, err := http.NewRequestWithContext(ctx, http.MethodPost, fullURL, &requestBody)
+	req, err := http.NewRequestWithContext(ctx, http.MethodPost, fullURL, strings.NewReader(body))
 	if err != nil {
 		return nil, fmt.Errorf("failed to form request for %s: %w", fullURL, err)
 	}
 
-	req.Header.Set("Content-Type", writer.FormDataContentType())
+	req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 
 	resp, err := c.httpClient.Do(req)
 	if err != nil {
